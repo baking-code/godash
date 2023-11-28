@@ -13,3 +13,17 @@ Started as a learning exercise, some of these utilities are instrinsic to the JS
 ## Contributing
 
 If you'd like to contrbute, just create a PR targeting `main` which follows the same structure to get it included. As this project evolves more stringent CI will be introduced.
+
+### Tests
+
+Run tests with
+
+```
+go test -coverpkg=./... ./...
+```
+
+or individually by supplying the directory of the package you wish to test, e.g
+
+```
+ go test -coverpkg=./intersection ./intersection
+```
