@@ -1,4 +1,4 @@
-module baking-code/godash
+module github.com/baking-code/godash
 
 go 1.21.4
 
