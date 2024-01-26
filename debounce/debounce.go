@@ -10,13 +10,11 @@ type Options struct {
 	trailing bool // default true
 }
 
-/*
-Creates a debounced function that delays invoking `fn` until after wait milliseconds have elapsed since the last time the debounced function was invoked.
-The debounced function comes with a cancel method to cancel delayed `fn` invocations and a flush method to immediately invoke them.
-Provide options to indicate whether `fn` should be invoked on the leading and/or trailing edge of the wait timeout.
-The `fn` is invoked with the last arguments provided to the debounced function.
-Subsequent calls to the debounced function return the result of the last func invocation.
-*/
+// Debounce creates a debounced function that delays invoking `fn` until after wait milliseconds have elapsed since the last time the debounced function was invoked.
+// The debounced function comes with a cancel method to cancel delayed `fn` invocations and a flush method to immediately invoke them.
+// Provide options to indicate whether `fn` should be invoked on the leading and/or trailing edge of the wait timeout.
+// The `fn` is invoked with the last arguments provided to the debounced function.
+// Subsequent calls to the debounced function return the result of the last func invocation.
 func Debounce[T interface{}](fn func(args ...T), wait int, options Options) (func(args ...T), func(), func()) {
 	invoked := false
 	cancelled := false

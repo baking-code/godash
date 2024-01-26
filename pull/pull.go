@@ -4,10 +4,8 @@ import (
 	"slices"
 )
 
-/*
-Removes all given values from array using comparable.
-Note: This method mutates input. Use _.remove to remove elements from an slice by predicate.
-*/
+// Pull removes all given values from array using comparable.
+// Note: This method mutates input. Use _.remove to remove elements from an slice by predicate.
 func Pull[T comparable](input *[]T, values ...T) []T {
 	// deal with pointer to input as slicing references a copy
 	index := 0
