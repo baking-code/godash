@@ -7,7 +7,7 @@ import (
 // Chunk creates a slice of elements split into groups the length of size.
 //
 // If slice can't be split evenly, the final chunk will be the remaining elements.
-func Chunk[T interface{}](input []T, size int) [][]T {
+func Chunk[T any](input []T, size int) [][]T {
 	if size == 0 {
 		return make([][]T, 0) // in js _.chunk([1,2,3], 0) === [], but the compiler won't let us here
 	}

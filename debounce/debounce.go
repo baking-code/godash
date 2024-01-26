@@ -1,7 +1,6 @@
 package debounce
 
 import (
-	"fmt"
 	"time"
 )
 
@@ -15,7 +14,7 @@ type Options struct {
 // Provide options to indicate whether `fn` should be invoked on the leading and/or trailing edge of the wait timeout.
 // The `fn` is invoked with the last arguments provided to the debounced function.
 // Subsequent calls to the debounced function return the result of the last func invocation.
-func Debounce[T interface{}](fn func(args ...T), wait int, options Options) (func(args ...T), func(), func()) {
+func Debounce[T any](fn func(args ...T), wait int, options Options) (func(args ...T), func(), func()) {
 	invoked := false
 	cancelled := false
 	var params []T
@@ -43,13 +42,10 @@ func Debounce[T interface{}](fn func(args ...T), wait int, options Options) (fun
 
 	wrap := func(p ...T) {
 		params = p
-		fmt.Println(p)
 		if !invoked {
 			invoked = true
-			fmt.Println("go", p)
 			go f()
 		}
-		return
 	}
 
 	cancel := func() {

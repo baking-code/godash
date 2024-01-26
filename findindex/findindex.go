@@ -1,6 +1,6 @@
 package findindex
 
-func iterate[T interface{}](input []T, predicate func(o T) bool, returnEarly bool) []int {
+func iterate[T any](input []T, predicate func(o T) bool, returnEarly bool) []int {
 	collect := make([]int, 0)
 	for i, element := range input {
 		if predicate(element) {
@@ -14,7 +14,7 @@ func iterate[T interface{}](input []T, predicate func(o T) bool, returnEarly boo
 }
 
 // FindIndex finds first index of element in input slice which satisfies predicate function
-func FindIndex[T interface{}](input []T, predicate func(o T) bool) int {
+func FindIndex[T any](input []T, predicate func(o T) bool) int {
 	collect := iterate[T](input, predicate, true)
 	if len(collect) > 0 {
 		return collect[0]
@@ -23,7 +23,7 @@ func FindIndex[T interface{}](input []T, predicate func(o T) bool) int {
 }
 
 // FindLastIndex finds last index of element in input slice which satisfies predicate function
-func FindLastIndex[T interface{}](input []T, predicate func(o T) bool) int {
+func FindLastIndex[T any](input []T, predicate func(o T) bool) int {
 	collect := iterate[T](input, predicate, false)
 	if len(collect) > 0 {
 		return collect[len(collect)-1]

@@ -5,7 +5,7 @@ import "math"
 // Fills elements of input with value from opts[0] up to, but not including, opts[1].
 // (Defaults: opts[0] = 0, opts[1] = len(input)])
 // Note: This method mutates input.
-func Fill[T interface{}](input []T, filler T, opts ...int) []T {
+func Fill[T any](input []T, filler T, opts ...int) []T {
 	start := 0
 	end := len(input)
 	if len(opts) == 1 {

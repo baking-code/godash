@@ -3,7 +3,7 @@ package zip
 import "fmt"
 
 // Zip creates a slice of grouped elements, the first of which contains the first elements of the given arrays, the second of which contains the second elements of the given arrays, and so on.
-func Zip[T interface{}](arrays ...[]T) [][]T {
+func Zip[T any](arrays ...[]T) [][]T {
 	zipLength := len(arrays)
 	zipped := make([][]T, zipLength)
 	for i := 0; i < zipLength; i++ {
@@ -17,7 +17,7 @@ func Zip[T interface{}](arrays ...[]T) [][]T {
 }
 
 // Unzip is like [github.com/baking-code/godash/zip].Zip except that it accepts an array of grouped elements and creates an array regrouping the elements to their pre-zip configuration.
-func Unzip[T interface{}](zipped [][]T) [][]T {
+func Unzip[T any](zipped [][]T) [][]T {
 	zipLength := len(zipped)
 	unzipped := make([][]T, zipLength)
 	for i := 0; i < zipLength; i++ {
