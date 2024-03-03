@@ -17,4 +17,9 @@ func TestPartition(t *testing.T) {
 	})
 	assert.EqualValues(t, []User{}, one)
 	assert.EqualValues(t, input, two)
+	three, four := Partition[User](input, func(e User, index int, collection []User) bool {
+		return e.user != "barney"
+	})
+	assert.EqualValues(t, []User{{user: "fred", active: true}}, three)
+	assert.EqualValues(t, []User{{user: "barney", active: true}}, four)
 }
